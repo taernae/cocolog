@@ -17,7 +17,7 @@ end
 	cat.save
 end
 
-["Achaea", "Aetolia", "Imperian", "Lithmeria", "Lusternia", "Midkemia Online", "Core MUD"].each do |gname|
+["Aardwolf", "Achaea", "Aetolia", "Avalon", "BatMUD", "Imperian", "Lithmeria", "Lusternia", "Midnight Sun II"].each do |gname|
 	gs = Game.new
 	gs.name = gname
 	gs.save
