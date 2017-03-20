@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  author: MyString
+  body: MyText
+  creator: MyString
+  owner: 1
+  reply: 1
+  modpost: false
+  blog_post: 
+
+two:
+  author: MyString
+  body: MyText
+  creator: MyString
+  owner: 1
+  reply: 1
+  modpost: false
+  blog_post: 

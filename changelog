@@ -1,0 +1,7 @@
+1.0.1
+	Fixed contact link in footer
+	Changed schema of log content to longtext (2^64 maxlength, as opposed to 2^16)
+
+1.0.2
+	Changed log display CSS to preserve whitespace
+	Prevented uploading of logs over 15M (MySql limitation. May change)

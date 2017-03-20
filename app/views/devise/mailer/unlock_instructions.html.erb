@@ -1,0 +1,6 @@
+<p>Hello, %= @resource.email %>!</p>
+
+<p>It seems that somebody has tried to log into your account with a failed password multiple times. As a precaution,  we have temporarily locked it. If it was you, we're really sorry this happened. The link below will unlock your account right away. If you have any problems, please contact support</p>
+
+<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+

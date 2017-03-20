@@ -1,0 +1,64 @@
+<div class="well">
+	<h3>Posted logs</h3>
+	<table class="table table-bordered">
+		<thead>
+			<th>Title</th>
+			<th>Game</th>
+			<th>Category</th>
+			<th>Private</th>
+			<th>Posted at</th>
+			<th>Modify</th>
+		</thead>
+		<% @logs.each do |log| %>
+		<tr>
+			<td><%= link_to log.title, log %></td>
+			<td><%= @games[log.game] %></td>
+			<td><%= @categories[log.category] %></td>
+			<td><%= log.private ? "yes" : "no" %></td>
+			<td><%= log.created_at %></td>
+			<td><%= link_to "Edit", edit_log_path(log), :class => "label label-info" %> <%= link_to "Delete", log, :confirm => "Are you sure?", :method => :delete, :class => "label label-important" %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+<br />
+<%= form_for(@user, :method => :put, :html => {:class => "form-horizontal well"}) do |f| %>
+
+	<fieldset>
+		<div id="legend">
+			<legend class="">Editing Profile</legend>
+		</div>
+		<div class="control-group">
+			<label class="control-label">Old Log View</label>
+			<div class="controls">
+				<%= f.check_box :old_log_view %>
+				<p class="help-block">Switch to the old style of log viewing</p>
+			</div>
+		</div>
+		<hr>
+		<div class="control-group">
+			<label class="control-label">Current Password</label>
+			<div class="controls">
+				<%= f.password_field :current_password %>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">New Password</label>
+			<div class="controls">
+				<%= f.password_field :password %>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">Confirm Password</label>
+			<div class="controls">
+				<%= f.password_field :password_confirmation %>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<%= f.submit "Submit", :class => "btn btn-success" %>
+			</div>
+		</div>
+	</fieldset>
+<% end %>
+

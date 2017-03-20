@@ -1,0 +1,28 @@
+<%= form_tag({:action => "/contact"}, {:class => "form-horizontal well"}) do %>
+	<fieldset>
+		<div id="legend">
+			<legend class="">Contact Us</legend>
+		</div>
+		<div class="control-group">
+			<label class="control-label">Your Email</label>
+			<div class="control">
+				<%= email_field_tag "email", (user_signed_in? ? current_user.email : "") %>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">Subject</label>
+			<div class="control">
+				<%= text_field_tag "subject", "" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">Message</label>
+			<div class="control">
+				<%= text_area_tag "message", "" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= submit_tag "Send" %>
+		</div>
+	</fieldset>
+<% end %>

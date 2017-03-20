@@ -1,0 +1,28 @@
+<% provide(:title, "Unlock Instructions") %>
+<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :class => "form-horizontal well", :method => :post }) do |f| %>
+	<%= devise_error_messages! %>
+
+	<fieldset>
+		<div id="legend">
+			<legend class="">Unlock Account</legend>
+		</div>
+		<div class="control-group">
+			<label class="control-label">Email</label>
+			<div class="controls">
+				<%= f.email_field :email %>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<%= f.submit "Send Unlock Instructions", :class => "btn btn-success" %>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+		<div align="right">
+			<%= render 'devise/shared/links' %>
+		</div>
+	</fieldset>
+<% end %>
+
+

@@ -1,0 +1,75 @@
+<% provide(:title, "Logs") %>
+<form class="well">
+    <fieldset>
+        <legend>Filter</legend>
+				<div class="container-fluid">
+					<div class="span6">
+					<label>Title</label>
+          <input type="text" name="title" placeholder="Title">
+					<label>Author</label>
+          <input type="text" name="author" placeholder="Author">
+          <label>Category</label>
+          <select name="category" placeholder="Category">
+              <option value=""></option>
+              <% Category.all.each do |cat| %>
+              <option value="<%= cat.id %>"><%= cat.name %></option>
+              <% end %>
+              <option value="0">Other</option>
+          </select>
+					</div>
+					<div class="span6">
+            <label>Game</label>
+            <select name="game">
+                <option value=""></option>
+                <% Game.all.each do |game| %>
+                <option value="<%= game.id %>"><%= game.name %></option>
+                <% end %>
+                <option value="0">Other</option>
+            </select>
+            <label>Order by</label>
+            <select name="order_by">
+                <option value="DESC">Descending</option>
+                <option value="ASC">Ascending</option>
+            </select>
+						<br /><br />
+            <input class="btn btn-success" type="submit" value="Filter">
+					</div>
+				</div>
+    </fieldset>
+</form>
+
+<div class="pull-right">
+        <%= will_paginate @logs %>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+	<th class="date">Date</th>
+        <th class="title">Title</th>
+        <th class="author">Author</th>
+        <th class="game">Game</th>
+        <th class="category">Category</th>
+        <% if user_signed_in? and can?(:edit, :log) %>
+        <th class="postdata">Post data</th>
+        <th class="moderate">Moderate</th>
+        <% end %>
+    </thead>
+    <% @logs.each do |log| %>
+    <tr>
+	<td class="date"><%= log.created_at.strftime("%b %d") %><br /><%= log.created_at.strftime("%Y") %></td>
+        <td class="title"><%= link_to log.title, log %> <% if log.private %><span style="color:red">(private)</span><% end %><br /><a href="logs/<%= log.token %>#comments"><small class="muted"><%= log.comments.count.to_s %> <%= log.comments.count.to_i == 1 ? "comment" : "comments" %></small></a></td>
+        <td class="author"><%= log.author.empty? ? "Anonymous" : log.author %></td>
+        <td class="game"><%= @games[log.game].to_s %></td>
+        <td class="category"><%= @categories[log.category].to_s %></td>
+        <% if user_signed_in? and can?(:edit, :log) %>
+        <td class="postdata"><%= "#{log.creator}:#{log.owner.to_i.to_s}" %></td>
+        <td class="moderate"><%= link_to "Edit", edit_log_path(log), :class => "label label-info" %> <%= link_to "Delete", log, :confirm => "Are you sure?", :method => :delete, :class => "label label-important" %></td>
+        <% end %>
+    </tr>
+    <% end %>
+    <br />
+</table>
+
+<div class="pull-right">
+	<%= will_paginate @logs %>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  author: MyString
+  owner: MyString
+  creator: MyString
+  body: MyString
+  reply: 1
+
+two:
+  author: MyString
+  owner: MyString
+  creator: MyString
+  body: MyString
+  reply: 1

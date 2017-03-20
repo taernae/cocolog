@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  token: MyString
+  title: MyString
+  description: MyString
+  author: MyString
+  game: MyString
+  private: false
+  contents: MyText
+
+two:
+  token: MyString
+  title: MyString
+  description: MyString
+  author: MyString
+  game: MyString
+  private: false
+  contents: MyText

@@ -1,0 +1,43 @@
+<title><% provide(:title, "New registration") %></title>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-horizontal well"}) do |f| %>
+
+<fieldset>
+	<div id="legend">
+		<legend class="">Log In</legend>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="login">Username or Email</label>
+		<div class="controls">
+			<%= f.text_field :login %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="password">Password</label>
+		<div class="controls">
+			<%= f.password_field :password %>
+		</div>
+	</div>
+
+	<% if devise_mapping.rememberable? %>
+	<div class="control-group">
+		<label class="control-label" for="remember_me">Remember Me</label>
+		<div class="controls">
+			<%= f.check_box :remember_me %>
+		</div>
+	</div>
+	<% end %>
+
+	<div class="control-group">
+		<div class="controls">
+			<%= f.submit "Sign In", :class => "btn btn-success" %>
+		</div>
+	</div>
+
+	<div class="clear"></div>
+	<div align="right">
+		<%= render "devise/shared/links" %>
+	</div>
+</fieldset>
+<% end %>

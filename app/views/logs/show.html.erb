@@ -1,0 +1,100 @@
+<% provide(:title, @log.title) %>
+
+<div class="well well-small <% if current_user and current_user.old_log_view %>span12<% else %>span4 pull-right<% end %>">
+	<div align="left"><h2><%= @log.title %></h2></div>
+	<div class="clearfix">
+	<div class="logbuttons pull-right">
+	<a href="#comments"><span class="label"><%= @log.comments.count %> Comments</span></a>
+	<% if @log.downloadable == true %>
+	<a href="/logs/<%= @log.token %>/raw"><span class="label label-inverse">Raw</span></a>
+	<a href="/logs/<%= @log.token %>/download"><span class="label label-inverse">Download</span></a>
+	<% end %>
+	<% if current_user and (@log.owner.to_i == current_user.id or current_user.role?(:admin)) %>
+	<%= link_to "Edit", edit_log_path(@log), :class => "label label-info" %>
+	<%= link_to "Delete", @log, :confirm => "Are you sure?", :method => :delete, :class => "label label-important" %>
+	<% end %>
+	</div>
+	<br />
+	<% if @log.description.to_s.empty? == false %>
+	<blockquote class="pull-right">
+		<p><%= @log.description %></p>
+		<small><%= @log.author.empty? ? "Anonymous" : @log.author %> of <%= @games[@log.game].to_s %></small>
+	</blockquote>
+	<% else %>
+	<p class="pull-right muted">Posted by <%= @log.author.empty? ? "Anonymous" : @log.author %> of <%= @games[@log.game] %>.</p>
+	<% end %>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div class="log-container <% if current_user and current_user.old_log_view %>span12<% else %>span8<% end %>">
+<%= @log.contents.html_safe %>
+</div>
+
+<br /><br />
+<div class="comment-container span8">
+	<a name="comments"></a>
+	<h3>Comments</h3>
+	<% for comment in @log.comments %>
+	<div class="well">
+		<a name="comment-<%= comment.id %>"></a>
+		<p class="<%= comment.modpost ? "text-error" : ( (comment.owner.to_i == @log.owner.to_i) ? "text-success" : "muted") %>"><strong>Posted by <%= comment.author %> at <%= comment.created_at %><%= (comment.reply.to_i > 0) ? " in reply to <a href=\"\#comment-#{comment.reply}\">\##{comment.reply}</a>" : "" %></strong></p>
+		<blockquote>
+			<p><%= comment.body %></p>
+		</blockquote>
+	</div>
+	<% end %>
+</div>
+<br />
+<div class="new-comment span8">
+	<% if user_signed_in? %>
+	<!-- New comment form here -->	
+	<%= form_for(:comment, :id => @log.token, :html => { :class => "form-horizontal well"}) do |f| %>
+	<fieldset>
+        	<div id="legend">
+                	<legend class="">New Comment</legend>
+            	</div>
+
+            	<div class="control-group">
+                	<label class="control-label" for="author">Author</label>
+                    	<div class="controls">
+                            	<%= f.text_field :author, :value => current_user.username  %>
+                            	<p class="help-block"></p>
+                    	</div>
+            	</div>
+
+
+            	<%= f.hidden_field :owner, :value => (user_signed_in? ? current_user.id : 0) %>
+            	<%= f.hidden_field :creator, :value => request.remote_ip %>
+
+            	<div class="control-group">
+                    	<label class="control-label" for="body">Comment</label>
+                    	<div class="controls">
+                            	<%= f.text_area :body, :size => "20x5" %>
+                            	<p class="help-block"></p>
+                    	</div>
+            	</div>
+
+            	<% if current_user.role?(:admin) %>
+            	<div class="control-group">
+                    	<label class="control-label" for="modpost">Mod Post</label>
+                    	<div class="controls">
+                            	<%= f.check_box :modpost %>
+                            	<p class="help-block">Identify as a mod. Please only use as needed.</p>
+                    	</div>
+            	</div>
+		<% end %>
+
+            	<div class="control-group">
+                    	<div class="controls">
+                            	<%= f.submit "Post", :class => "btn btn-success" %>
+                    	</div>
+            	</div>
+    	</fieldset>
+    	<% end %>
+
+	<% else %>
+	<div class="alert alert-info span12">You must <a href="/users/sign_in">log in</a> to write a comment</div>
+	<% end %>	
+</div>
+	

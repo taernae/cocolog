@@ -1,0 +1,18 @@
+<div class="field">
+	<%= f.label :username %><br />
+	<%= f.text_field :username %>
+</div>
+
+<div class="field">
+	<%= f.label :email %><br />
+	<%= f.email_field :email %>
+</div>
+
+<% id can? :read, Role %>
+	<div class="field">
+		<%= f.label :role %><br />
+		<ul class="no-pad no-bullets">
+			<%= habtm_checkboxes(@user, :role_ids, @accessible_roles, :username) %>
+		</ul>
+	</div>
+<% end %>

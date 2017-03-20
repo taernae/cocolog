@@ -1,0 +1,60 @@
+// Place all the styles related to the Logs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.log-container {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+	margin-left: 0px !important;
+  background-color: #000000;
+  border: 1px solid #101214;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  line-height: 1.1;
+  font-family: "Courier New", Courier, monospace;
+  white-space: pre-wrap;
+}
+
+.log-container pre {
+  background-color: #000;
+  line-height: 1.1;
+  border: none;
+}
+
+.log-container pre br {
+  display: none;
+}
+
+.log-container p {
+	display: inline;
+}
+
+.log-container div {
+	display: inline;
+}
+
+.comment-container {
+	margin-left: 0px !important;
+}
+
+.new-comment {
+	margin-left: 0px !important;
+}
+
+.input {
+	color: black;
+}
+
+tbody .date {
+	white-space: nowrap;
+}
+
+tbody .title {
+	width: 100%;
+}
+

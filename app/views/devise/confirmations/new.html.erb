@@ -1,0 +1,27 @@
+<% provide(:title, "Resend confirmation instructions") %>
+<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :class => "form-horizontal well", :method => :post }) do |f| %>
+	<%= devise_error_messages! %>
+
+	<fieldset>
+		<div id="legend">
+			<legend class="">Resend Confirmation Instructions</legend>
+		</div>
+		<div class="control-group">
+			<label class="control-label">Username or Email</label>
+			<div class="controls">
+				<%= f.text_field :login %>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<%= f.submit "Resend Instructions", :class => "btn btn-success" %>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+		<div align="right">
+			<%= render 'devise/shared/links' %>
+		</div>
+	</fieldset>
+<% end %>
+

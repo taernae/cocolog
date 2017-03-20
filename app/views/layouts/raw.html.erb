@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= yield(:title) %></title>
+		<style type="text/css">
+body {
+  background-color: #000000;
+  color: silver;
+  line-height: 1.1;
+  font-family: "Courier New", Courier, monospace;
+  white-space: pre-wrap;
+}
+
+pre {
+  background-color: #000;
+  line-height: 1.1;
+}
+
+pre br {
+  display: none;
+}
+		</style>
+	</head>
+	<body>
+		<%= yield %>
+	</body>
+</html>

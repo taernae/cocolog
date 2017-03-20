@@ -1,0 +1,34 @@
+<% provide(:title, "Home") %>
+<div class="well">
+	<p>Built entirely as a resource for MUD (text-based, real-time multiplayer games) players to share logs with each other, CocoLog strives to provide a comprehensive interface and suite of features to accompany logs posted here, most features having been added at the request of several MUD players. Currently, CocoLog readily supports only a few realms, but if you are a player or administrator and want yours added, please feel free to <em><a href="/contact">contact me</a></em> and I will gladly add it.</p>
+	<a href="/about" class="muted pull-right">Read more...</a>
+	<br />
+</div>
+<br />
+<h3>Recent logs:</h3>
+<table class="table table-bordered table-striped table-condensed">
+	<thead>
+		<th style="white-space: nowrap; width: 50px;">Date</th>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Game</th>
+		<th>Category</th>
+	</thead>
+	<% @logs.each do |log| %>
+	<tr>
+		<td style="white-space: nowrap; width: 50px;"><%= log.created_at.strftime("%b %d") %><br /><%= log.created_at.strftime("%Y") %></td>
+		<td><%= link_to log.title, log %><br /><a href="logs/<%= log.token %>#comments"><small class="muted"><%= log.comments.count.to_s %> <%= log.comments.count.to_i == 1 ? "comment" : "comments" %></small></a></td>
+		<td><%= log.author.empty? ? "Anonymous" : log.author %></td>
+		<td><%= @games[log.game].to_s %></td>
+		<td><%= @categories[log.category] %></td>
+	</tr>
+	<% end %>
+</table>
+<br /><br />
+<div class="well well-small">
+	<h4>The CocoLog Blog has moved</h4>
+	<blockquote>
+		<p>The CocoLog blog has moved to its own site. Except for the first blog post, all blog posts have been moved there, including the newest one! Give it a read if you want!</p>
+		<small>Administrator at 2017-03-20 16:59 GMT</small>
+	</blockquote>
+</div>

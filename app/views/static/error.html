@@ -1,0 +1,10 @@
+<% provide(:title, "500 Server Error") %>
+<h2>THE SERVER WENT BOOM!</h2>
+<div class="well">
+	<p>Well, damn, there's that luck. Something you did made the server gods very angry. Don't feel bad, though. It's probably our fault. A lot of CocoLog was coded while drunk or half asleep, considering it was a two-week codefest. We've logged the error. However, we aren't always going to notice it. So if you could do us a favour and report it, that'd be great. Feel free to use the <a href="/contact">contact form</a> and shoot us an email. Be sure to include any information given to you by this page below this wall of text. Thanks!</p>
+</div>
+<br />
+<h3>Extra Information</h3>
+<div class="well">
+	<%= @guru_meditation.nil? ? "" : "<b>Guru meditation: #{@guru_meditation.to_s}</b>".html_safe %>
+</div>

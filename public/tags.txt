@@ -1,0 +1,44 @@
+Allowed HTML tags:
+'b'  => ['class', 'id', 'style', 'title'],
+'basefont' => ['color', 'face', 'size'],
+'bdo'  => ['class', 'dir', 'lang', 'id', 'style', 'title'],
+'br' => ['class', 'id'],
+'center' => ['class', 'id', 'style', 'title'],
+'div'  => ['class', 'align', 'style', 'id', 'style', 'title'],
+'em'  => ['class', 'id', 'style', 'title'],
+'font' => ['face', 'size', 'color', 'class', 'id', 'style', 'title'],
+'i'  => ['class', 'id', 'style', 'title'],
+'p'  => ['align', 'class', 'id', 'style', 'title'],
+'pre' => ['class', 'id', 'style', 'title'],
+'s'  => ['class', 'id', 'style', 'title'],
+'span'  => ['class', 'id', 'style', 'title'],
+'strong'  => ['class', 'id', 'style', 'title'],
+'u'  => ['class', 'id', 'style', 'title'],
+
+Unclosed tags:
+'img',
+'br',
+'hr'
+
+Force-closed tags:
+'a'
+'b'
+
+Filtered for blank data:
+'a'
+'b'
+
+Comments stripped: yes
+
+Allowed entities:
+'amp',
+'copy',
+'gt',
+'lt',
+'nbsp',
+'quot',
+'apos',
+'#60',
+'#63',
+'#8216'
+

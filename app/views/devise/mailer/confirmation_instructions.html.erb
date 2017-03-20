@@ -1,0 +1,5 @@
+<p>Welcome to CocoLog, <%= @resource.username %>. </p>
+
+<p>Please click the confirmation link below and your account will be confirmed. If you can't click the link or there is no link, please contact the site admin at admin@taernae.net</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>

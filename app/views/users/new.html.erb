@@ -1,0 +1,48 @@
+<%= form_for(@user, :method => :post, :class => "form-horizontal well") do |f| %>
+        <fieldset>
+                <div id="legend">
+                        <legend class="">Register user</legend>
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Username</label>
+                        <div class="controls">
+                                <%= f.text_field :username %>
+                        </div>
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Email</label>
+                        <div class="controls">
+                                <%= f.email_field :email %>
+                        </div>
+                </div>
+
+                <div class="control-group">
+                        <label class="control-label">New Password</label>
+                        <div class="controls">
+                                <%= f.password_field :password %>
+                        </div>
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Confirm Password</label>
+                        <div class="controls">
+                                <%= f.password_field :password_confirmation %>
+                        </div>
+                </div>
+                <div class="control-group">
+                        <label class="control-label">Role(s)</label>
+                        <div class="controls">
+                                <% Role.all.each do |role| %>
+                                <label class="checkbox">
+                                        <%= check_box_tag "user[role_ids][]", role.id, @user.role_ids.include?(role.id) %> <%= role.name %>
+                                </label>
+                                <% end %>
+                        </div>
+                </div>
+                <div class="control-group">
+                        <div class="controls">
+                                <%= f.submit "Submit", :class => "btn btn-success" %>
+                        </div>
+                </div>
+        </fieldset>
+<% end %>
+

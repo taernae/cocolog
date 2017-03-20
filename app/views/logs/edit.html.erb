@@ -1,0 +1,84 @@
+<%= form_for((@log), :html => { :class => "form-horizontal well" } ) do |f| %>
+<% if @log.errors.any? %>
+<div id="alert alert-error alert-block">
+	<button type="button" class="close" data-dismiss="alert">x</button>
+	<ul>
+		<% @log.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<fieldset>
+	<div id="legend">
+		<legend class="">Editing log #<%= @log.id %></legend>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="title">Title</label>
+		<div class="controls">
+			<%= f.text_field :title, :value => @log.title %>
+			<p class="help-block"></p>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="description">Description</label>
+		<div class="controls">
+			<%= f.text_field :description, :value => @log.description %>
+			<p class="help-block"></p>
+		</div>
+	</div>
+
+	<% if current_user.role?(:admin) %>
+	<div class="control-group">
+		<label class="control-label" for="author">Author</label>
+		<div class="controls">
+			<%= f.text_field :author, :value => @log.author %>
+			<p class="help-block"></p>
+		</div>
+	</div>
+	<% end %>
+
+	<div class="control-group">
+		<label class="control-label" for="game">Game</label>
+		<div class="controls">
+			<%= f.select("game", Game.all.collect {|g| [ g.name, g.id ] }.push(["Other", 0]), :selected => @log.game) %>
+			<p class="help-block"></p>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="category">Category</label>
+		<div class="controls">
+			<%= f.select("category", Category.all.collect {|c| [ c.name, c.id ] }.push(["Other", 0]), :selected => @log.category) %>
+			<p class="help-block"></p>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="private">Private</label>
+		<div class="controls">
+			<%= check_box "log", "private", {:checked => @log.private}, 'true', 'false' %>
+			<p class="help-block">Removes log from the listings</p>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="downloadable">Downloadable</label>
+		<div class="controls">
+			<%= check_box "log", "downloadable", {:checked => @log.downloadable}, 'true', 'false' %>
+			<p class="help-block">Allow others to view the raw log or download it</p>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<div class="controls">
+			<%= f.submit "Submit", :class => "btn btn-success" %>
+		</div>
+	</div>
+</fieldset>
+
+<% end %>
+

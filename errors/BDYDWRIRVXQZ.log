@@ -1,0 +1,3 @@
+ActiveRecord::StatementInvalid (Could not find table 'games'):
+["app/controllers/static_controller.rb:4:in `index'"]
+
