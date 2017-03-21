@@ -1,0 +1,3 @@
+ArgumentError (dump format error for symbol(0x2f)):
+["app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___2833316360112090822_32321720'", "app/controllers/static_controller.rb:7:in `index'"]
+

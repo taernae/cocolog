@@ -1,0 +1,4 @@
+Sass::SyntaxError (Invalid CSS after "...rline Medium", ": expected ";", was ", Arial, sans-s..."
+  (in /home/ubuntu/cocolog/app/assets/stylesheets/custom.css.scss)):
+["app/assets/stylesheets/custom.css.scss:209", "app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb__1077651528149757636_23272280'", "app/controllers/static_controller.rb:7:in `index'"]
+

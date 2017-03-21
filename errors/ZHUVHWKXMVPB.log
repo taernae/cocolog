@@ -1,0 +1,6 @@
+ActionView::MissingTemplate (Missing template static/notfound, application/notfound with {:locale=>[:en], :formats=>[:xml], :handlers=>[:erb, :builder, :coffee]}. Searched in:
+  * "/home/ubuntu/cocolog/app/views"
+  * "/home/ubuntu/.rvm/gems/ruby-2.2.2/gems/devise-3.5.10/app/views"
+):
+[]
+
